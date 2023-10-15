@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/caddyserver/caddy/v2 v2.7.5
-	github.com/moonlike0999/indexfs v0.0.1
+	github.com/moonlike0999/caddyfs/indexfs v0.0.1
 	go.mrchanchal.com/zaphandler v0.0.0-20230611140024-bd4fd80897ad
 )
 
@@ -32,6 +32,7 @@ require (
 	github.com/zeebo/blake3 v0.2.3 // indirect
 	go.uber.org/mock v0.3.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
+	go.uber.org/zap v1.25.0 // indirect
 	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/exp v0.0.0-20230310171629-522b1b587ee0 // indirect
 	golang.org/x/mod v0.11.0 // indirect
