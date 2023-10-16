@@ -23,20 +23,20 @@ type _Root FS
 func _NewRoot(fsys *FS) fs.File { return (*_Root)(fsys) }
 
 func (r *_Root) ReadDir(count int) ([]fs.DirEntry, error) {
-	files, err := _IndexFiles(r._Base, r._FileRegex)
+	files, err := _IndexFiles((*FS)(r), r._Base, r._FileRegex)
 	return _LimitFiles(count, files), err
 }
 
-func _IndexFiles(base fs.FS, fileRegex *regexp.Regexp) ([]fs.DirEntry, error) {
+func _IndexFiles(fsys fs.FS, base fs.FS, fileRegex *regexp.Regexp) ([]fs.DirEntry, error) {
 	var files []fs.DirEntry
-	err := _WalkFiles(base, fileRegex, func(f *File) error { files = append(files, f); return nil })
+	err := _WalkFiles(fsys, base, fileRegex, func(f *File) error { files = append(files, f); return nil })
 	_SortFileInfo(files)
 	return files, err
 }
 
-func _WalkFiles(base fs.FS, fileRegex *regexp.Regexp, handleFile func(*File) error) error {
+func _WalkFiles(fsys fs.FS, base fs.FS, fileRegex *regexp.Regexp, handleFile func(*File) error) error {
 	var errs []error
-	errs = append(errs, fs.WalkDir(base, ".", _WalkFunc(fileRegex, &errs, handleFile)))
+	errs = append(errs, fs.WalkDir(base, ".", _WalkFunc(fsys, fileRegex, &errs, handleFile)))
 	return errors.Join(errs...)
 }
 
@@ -47,12 +47,12 @@ func _LimitFiles(count int, files []fs.DirEntry) []fs.DirEntry {
 	return files
 }
 
-func _WalkFunc(fileRegex *regexp.Regexp, errs *[]error, handleFile func(*File) error) fs.WalkDirFunc {
+func _WalkFunc(fsys fs.FS, fileRegex *regexp.Regexp, errs *[]error, handleFile func(*File) error) fs.WalkDirFunc {
 	return func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			*errs = append(*errs, err)
 		} else if !d.IsDir() && d.Type().IsRegular() && fileRegex.MatchString(path) {
-			f, err := _GetFileInfo(path, d)
+			f, err := _GetFileInfo(fsys, path, d)
 			if err != nil {
 				*errs = append(*errs, err)
 			}
@@ -72,8 +72,8 @@ func _SortFileInfo(files []fs.DirEntry) {
 	})
 }
 
-func _GetFileInfo(path string, d fs.DirEntry) (_ *File, finalErr error) {
-	f := File{Path: path, Date: new(Date)}
+func _GetFileInfo(fsys fs.FS, path string, d fs.DirEntry) (_ *File, finalErr error) {
+	f := File{_FS: fsys, Path: path, Date: new(Date)}
 
 	if stat, err := d.Info(); err != nil {
 		f.FileSize = -1

@@ -29,9 +29,7 @@ type File struct {
 
 func (f *File) _Open() error {
 	f._Opened.Do(func() {
-		if f._File, f._OpenErr = f._FS.Open(f.Path); f._OpenErr != nil {
-			return
-		}
+		f._File, f._OpenErr = f._FS.Open(f.Path)
 		f._FS = nil
 	})
 	return f._OpenErr
