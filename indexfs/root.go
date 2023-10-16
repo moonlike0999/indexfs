@@ -84,7 +84,6 @@ func _GetFileInfo(path string, d fs.DirEntry) (_ *File, finalErr error) {
 
 	if err := f.Date.UnmarshalText([]byte(path)); err != nil {
 		finalErr = errors.Join(finalErr, err)
-	} else {
 		f.Date = new(Date)
 	}
 	return &f, finalErr
