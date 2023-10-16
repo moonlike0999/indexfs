@@ -1,3 +1,3 @@
-module github.com/moonlike0999/caddyfs/indexfs
+module github.com/moonlike0999/indexfs/indexfs
 
-go 1.21
+go 1.21.1

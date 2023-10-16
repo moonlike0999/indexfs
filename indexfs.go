@@ -1,4 +1,4 @@
-package caddyfs
+package indexfs
 
 import (
 	"errors"
@@ -12,14 +12,12 @@ import (
 
 var _ caddy.Module = (*IndexFS)(nil)
 
-func init() {
-	caddy.RegisterModule(new(IndexFS))
-}
+func init() { caddy.RegisterModule(new(IndexFS)) }
 
 type IndexFS struct {
 	fs.FS             `json:"-"`
-	DataDir           string   `json:"data-dir"`
-	AllowedExtensions []string `json:"allowed-extensions"`
+	DataDir           string   `json:"dir"`
+	AllowedExtensions []string `json:"extensions"`
 }
 
 func (ifs *IndexFS) CaddyModule() caddy.ModuleInfo {
@@ -38,11 +36,8 @@ func (ifs *IndexFS) Provision(ctx caddy.Context) error {
 func (ifs *IndexFS) Validate() error {
 	if len(ifs.AllowedExtensions) == 0 {
 		return errors.New("no allowed extensions")
-	}
-
-	f, err := os.Open(ifs.DataDir)
-	if err != nil {
+	} else if _, err := os.Stat(ifs.DataDir); err != nil {
 		return err
 	}
-	return f.Close()
+	return nil
 }
