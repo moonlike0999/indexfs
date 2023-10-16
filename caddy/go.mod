@@ -1,10 +1,10 @@
-module github.com/moonlike0999/indexfs
+module github.com/moonlike0999/indexfs/caddy
 
-go 1.21
+go 1.21.1
 
 require (
 	github.com/caddyserver/caddy/v2 v2.7.5
-	github.com/moonlike0999/indexfs/indexfs v0.0.1
+	github.com/moonlike0999/caddyfs/indexfs v0.0.1
 	go.mrchanchal.com/zaphandler v0.0.0-20230611140024-bd4fd80897ad
 )
 
