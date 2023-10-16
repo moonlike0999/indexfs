@@ -47,7 +47,7 @@ func _OpenFile(base fs.FS, fileRegex *regexp.Regexp, date Date) (fs.File, error)
 	found, errC := make(chan fs.File), make(chan error)
 	go func() {
 		defer close(found)
-		if err := _WalkFiles(base, fileRegex, func(file *File) error {
+		if err := _WalkFiles(base, base, fileRegex, func(file *File) error {
 			if *file.Date == date {
 				found <- file
 				return fs.SkipAll
