@@ -23,20 +23,20 @@ type _Root FS
 func _NewRoot(fsys *FS) fs.File { return (*_Root)(fsys) }
 
 func (r *_Root) ReadDir(count int) ([]fs.DirEntry, error) {
-	files, err := _IndexFiles((*FS)(r), r._Base, r._FileRegex)
+	files, err := _IndexFiles(r._Base, r._FileRegex)
 	return _LimitFiles(count, files), err
 }
 
-func _IndexFiles(fsys fs.FS, base fs.FS, fileRegex *regexp.Regexp) ([]fs.DirEntry, error) {
+func _IndexFiles(base fs.FS, fileRegex *regexp.Regexp) ([]fs.DirEntry, error) {
 	var files []fs.DirEntry
-	err := _WalkFiles(fsys, base, fileRegex, func(f *File) error { files = append(files, f); return nil })
+	err := _WalkFiles(base, fileRegex, func(f *File) error { files = append(files, f); return nil })
 	_SortFileInfo(files)
 	return files, err
 }
 
-func _WalkFiles(fsys fs.FS, base fs.FS, fileRegex *regexp.Regexp, handleFile func(*File) error) error {
+func _WalkFiles(base fs.FS, fileRegex *regexp.Regexp, handleFile func(*File) error) error {
 	var errs []error
-	errs = append(errs, fs.WalkDir(base, ".", _WalkFunc(fsys, fileRegex, &errs, handleFile)))
+	errs = append(errs, fs.WalkDir(base, ".", _WalkFunc(base, fileRegex, &errs, handleFile)))
 	return errors.Join(errs...)
 }
 
