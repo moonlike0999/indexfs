@@ -61,7 +61,7 @@ func (d *Date) String() string {
 }
 
 func (d *Date) Time() time.Time {
-	return time.Date(int(d.Year), time.Month(d.Month), 1, 0, 0, 0, 0, time.UTC)
+	return time.Date(int(d.Year), time.Month(d.Month), 1, 0, 0, 0, 0, time.Local)
 }
 
 func (y Year) String() string {
