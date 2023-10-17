@@ -1,4 +1,4 @@
-package indexfs
+package loggedfs
 
 import (
 	"io/fs"
