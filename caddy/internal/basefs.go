@@ -4,10 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/caddyserver/caddy/v2"
-	"github.com/moonlike0999/caddyfs/indexfs"
-	"go.mrchanchal.com/zaphandler"
 	"io/fs"
-	"log/slog"
 )
 
 var _ interface {
@@ -30,7 +27,6 @@ func (bfs *BaseFS) Provision(ctx caddy.Context) error {
 	} else {
 		return fmt.Errorf("no fs specified")
 	}
-	bfs.FS = indexfs.Logged(slog.New(zaphandler.New(ctx.Logger())), bfs.FS)
 	return nil
 }
 

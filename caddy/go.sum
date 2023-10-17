@@ -43,6 +43,7 @@ github.com/miekg/dns v1.1.55 h1:GoQ4hpsj0nFLYe+bWiCToyrBEJXkQfOOIvFGFy0lEgo=
 github.com/miekg/dns v1.1.55/go.mod h1:uInx36IzPl7FYnDcMeVWxj9byh7DutNykX4G9Sj60FY=
 github.com/moonlike0999/caddyfs/indexfs v0.0.1 h1:Jp6ZJ7GthNKcNsRuXhXAo+vYoyzLsF80fdAUUFzOFL4=
 github.com/moonlike0999/caddyfs/indexfs v0.0.1/go.mod h1:rEEq+0I62y4HflUbj3ueSAlxTAyl+v1WI3ff5uNlLXs=
+github.com/moonlike0999/indexfs/indexfs v0.0.6/go.mod h1:Oj4EhZmlxXGfjlYzIe61aqREFYNpdMBpC/hxo0wvBOs=
 github.com/onsi/ginkgo/v2 v2.9.5 h1:+6Hr4uxzP4XIUyAkg61dWBw8lb/gc4/X5luuxN/EC+Q=
 github.com/onsi/ginkgo/v2 v2.9.5/go.mod h1:tvAoo1QUJwNEU2ITftXTpR7R1RbCzoZUOs3RonqW57k=
 github.com/onsi/gomega v1.27.6 h1:ENqfyGeS5AX/rlXDd/ETokDz93u0YufY1Pgxuy/PvWE=

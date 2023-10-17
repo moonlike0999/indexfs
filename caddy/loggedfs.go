@@ -2,8 +2,8 @@ package caddyfs
 
 import (
 	"github.com/caddyserver/caddy/v2"
-	"github.com/moonlike0999/caddyfs/indexfs"
 	"github.com/moonlike0999/indexfs/caddy/internal"
+	"github.com/moonlike0999/indexfs/indexfs"
 	"go.mrchanchal.com/zaphandler"
 	"io/fs"
 	"log/slog"

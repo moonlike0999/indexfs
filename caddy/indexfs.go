@@ -3,8 +3,8 @@ package caddyfs
 import (
 	"errors"
 	"github.com/caddyserver/caddy/v2"
-	"github.com/moonlike0999/caddyfs/indexfs"
 	"github.com/moonlike0999/indexfs/caddy/internal"
+	"github.com/moonlike0999/indexfs/indexfs"
 	"io/fs"
 )
 
