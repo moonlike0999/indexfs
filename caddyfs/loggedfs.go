@@ -3,7 +3,6 @@ package caddyfs
 import (
 	"github.com/caddyserver/caddy/v2"
 	"github.com/moonlike0999/indexfs/caddy/internal"
-	"github.com/moonlike0999/indexfs/indexfs"
 	"go.mrchanchal.com/zaphandler"
 	"io/fs"
 	"log/slog"
@@ -29,7 +28,7 @@ func (ifs *LoggedFS) Provision(ctx caddy.Context) error {
 	if err := ifs.BaseFS.Provision(ctx); err != nil {
 		return err
 	}
-	ifs.FS = indexfs.Logged(slog.New(zaphandler.New(ctx.Logger())), ifs.FS)
+	ifs.FS = logged.Logged(slog.New(zaphandler.New(ctx.Logger())), ifs.FS)
 	return nil
 }
 

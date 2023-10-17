@@ -142,3 +142,4 @@ fabric.properties
 config/*
 data/*
 cfg/*
+caddy.*
