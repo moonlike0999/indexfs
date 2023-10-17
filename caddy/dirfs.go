@@ -26,7 +26,7 @@ func (dfs *DirFS) CaddyModule() caddy.ModuleInfo {
 }
 
 func (dfs *DirFS) Provision(caddy.Context) error {
-	dfs.FS = os.DirFS(dfs.DataDir)
+	dfs.FS = os.DirFS(caddy.NewReplacer().ReplaceAll(dfs.DataDir, ""))
 	return nil
 }
 

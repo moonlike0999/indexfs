@@ -30,6 +30,11 @@ func (ifs *IndexFS) Provision(ctx caddy.Context) error {
 	if err := ifs.BaseFS.Provision(ctx); err != nil {
 		return err
 	}
+	allowed := make([]string, len(ifs.AllowedExtensions))
+	replacer := caddy.NewReplacer()
+	for i, s := range ifs.AllowedExtensions {
+		allowed[i] = replacer.ReplaceAll(s, "")
+	}
 	ifs.FS = indexfs.New(ifs.FS, ifs.AllowedExtensions...)
 	return nil
 }
