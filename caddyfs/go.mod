@@ -5,6 +5,7 @@ go 1.21.1
 require (
 	github.com/caddyserver/caddy/v2 v2.7.5
 	github.com/moonlike0999/indexfs/indexfs v0.0.7
+	github.com/moonlike0999/indexfs/loggedfs v0.0.2
 	go.mrchanchal.com/zaphandler v0.0.0-20230611140024-bd4fd80897ad
 )
 
