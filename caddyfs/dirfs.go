@@ -2,7 +2,7 @@ package caddyfs
 
 import (
 	"github.com/caddyserver/caddy/v2"
-	"github.com/moonlike0999/indexfs/caddy/internal"
+	"github.com/moonlike0999/indexfs/caddyfs/internal"
 	"io/fs"
 	"os"
 )
