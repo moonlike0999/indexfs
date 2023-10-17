@@ -1,4 +1,4 @@
-module github.com/moonlike0999/indexfs/caddy
+module github.com/moonlike0999/indexfs/caddyfs
 
 go 1.21.1
 
