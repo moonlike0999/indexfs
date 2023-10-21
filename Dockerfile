@@ -9,7 +9,8 @@ FROM caddy:2.7.5
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
-RUN mkdir /cfg /fs
-RUN echo "{}" >> /cfg/config.json5
+RUN mkdir /fs
+RUN echo "{}" >> /config/config.json5
+RUN rm /config/Caddyfile
 
-CMD ["caddy", "run", "--config", "/cfg/config.json5", "--adapter", "json5"]
+CMD ["caddy", "run", "--config", "/config/config.json5", "--adapter", "json5"]

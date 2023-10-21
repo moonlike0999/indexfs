@@ -15,5 +15,4 @@ services:
       - ${FS_DIR}:/fs
       - ${APPDATA_DIR}:/data
       - ${CONFIG_DIR}:/config
-      - ${CONFIG}:/cfg
     restart: always
