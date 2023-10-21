@@ -66,7 +66,7 @@ func (f *File) Stat() (fs.FileInfo, error) { return f, nil }
 func (f *File) Name() string               { return f.Date.String() + filepath.Ext(f.Path) }
 func (f *File) Size() int64                { return f.FileSize }
 func (f *File) Mode() fs.FileMode          { return os.ModePerm }
-func (f *File) Type() fs.FileMode          { return f.Mode() }
+func (f *File) Type() fs.FileMode          { return f.Mode().Type() }
 func (f *File) ModTime() time.Time         { return f.Date.Time() }
 func (f *File) IsDir() bool                { return false }
 func (f *File) Sys() any                   { return nil }

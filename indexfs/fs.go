@@ -7,7 +7,6 @@ import (
 	"os"
 	"regexp"
 	"slices"
-	"strings"
 )
 
 var (
@@ -19,15 +18,15 @@ type FS struct {
 	_Base      fs.FS
 }
 
-func New(base fs.FS, allowedExtensions ...string) *FS {
+func New(base fs.FS) *FS {
 	return &FS{
-		_FileRegex: _MakeFileRegex(allowedExtensions),
+		_FileRegex: _MakeFileRegex(),
 		_Base:      base,
 	}
 }
 
-func _MakeFileRegex(allowedExtensions []string) *regexp.Regexp {
-	return regexp.MustCompile(fmt.Sprintf(`(?i)^.*%s.*(%s)$`, DateRegexString, strings.ReplaceAll(strings.Join(allowedExtensions, "|"), ".", "\\.")))
+func _MakeFileRegex() *regexp.Regexp {
+	return regexp.MustCompile(fmt.Sprintf(`(?i)^.*%s.*$`, DateRegexString))
 }
 
 func (fsys *FS) Open(name string) (fs.File, error) {
