@@ -1,7 +1,7 @@
 FROM caddy:2.7.5-builder AS builder
 
 RUN xcaddy build \
-    --with github.com/moonlike0999/indexfs/caddy \
+    --with github.com/moonlike0999/indexfs/caddyfs \
     --with github.com/caddy-dns/digitalocean \
     --with github.com/caddyserver/json5-adapter
 
