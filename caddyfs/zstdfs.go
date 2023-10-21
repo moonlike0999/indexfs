@@ -13,7 +13,7 @@ var _ interface {
 	caddy.Provisioner
 } = (*IndexFS)(nil)
 
-func init() { caddy.RegisterModule(new(IndexFS)) }
+func init() { caddy.RegisterModule(new(ZSTDFS)) }
 
 type ZSTDFS struct {
 	internal.BaseFS
