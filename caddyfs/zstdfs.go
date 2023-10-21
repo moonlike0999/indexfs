@@ -20,7 +20,7 @@ type ZSTDFS struct {
 }
 
 func (zfs *ZSTDFS) CaddyModule() caddy.ModuleInfo {
-	return internal.ModGen[IndexFS]("zstdfs")
+	return internal.ModGen[ZSTDFS]("zstdfs")
 }
 
 func (zfs *ZSTDFS) Provision(ctx caddy.Context) error {
