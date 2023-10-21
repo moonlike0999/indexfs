@@ -11,6 +11,5 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 
 RUN mkdir /fs
 RUN echo "{}" >> /config/config.json5
-RUN rm /config/Caddyfile
 
 CMD ["caddy", "run", "--config", "/config/config.json5", "--adapter", "json5"]
