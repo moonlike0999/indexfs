@@ -27,13 +27,17 @@ func New(base fs.FS) *FS {
 
 func (fsys *FS) Open(name string) (fs.File, error) {
 	f, err := fsys._Base.Open(name)
-	if err != nil {
-		return nil, err
+	if e := err; e != nil {
+		if f, err = fsys._Base.Open(name + ".zst"); err != nil {
+			return nil, errors.Join(err, e)
+		}
 	}
 
 	stat, err := f.Stat()
-	if err != nil || stat.IsDir() {
+	if err != nil {
 		return nil, errors.Join(err, f.Close())
+	} else if stat.IsDir() {
+		return &proxyDir{ReadDirFile: f.(fs.ReadDirFile), base: fsys}, nil
 	}
 
 	dec, err := zstd.NewReader(nil, zstd.WithDecoderConcurrency(1))
