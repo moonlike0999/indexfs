@@ -47,8 +47,8 @@ github.com/moonlike0999/indexfs/indexfs v0.0.8 h1:kCe/eMOqfQneb9D1bnavQJbgKxkEw4
 github.com/moonlike0999/indexfs/indexfs v0.0.8/go.mod h1:EXCfP+jN/oCZTJE2HFR+4BCh/5xM4cOv8wHaYCY3814=
 github.com/moonlike0999/indexfs/loggedfs v0.0.2 h1:pkkrPQA73B9yXCJgWO15e8I63pPqApot8bSVGb763FA=
 github.com/moonlike0999/indexfs/loggedfs v0.0.2/go.mod h1:kOJEx0S60SGm2wbWYZIgw10OykO3m9LZ473obuaWPVo=
-github.com/moonlike0999/indexfs/zstdfs v0.0.1 h1:Aro2m12V8vk5k7wR7+Bb58Ct5Kg6l07wx7fI2SHwVKU=
-github.com/moonlike0999/indexfs/zstdfs v0.0.1/go.mod h1:f9PtmIZNDxPcdrTdZJd1meNb8qQBwgZpPOz3tZSrBtk=
+github.com/moonlike0999/indexfs/zstdfs v0.0.2 h1:fGeuRjNg0KJoFBUeY1Th/pZUinsHZJaNT1V5TOT4djo=
+github.com/moonlike0999/indexfs/zstdfs v0.0.2/go.mod h1:f9PtmIZNDxPcdrTdZJd1meNb8qQBwgZpPOz3tZSrBtk=
 github.com/onsi/ginkgo/v2 v2.9.5 h1:+6Hr4uxzP4XIUyAkg61dWBw8lb/gc4/X5luuxN/EC+Q=
 github.com/onsi/ginkgo/v2 v2.9.5/go.mod h1:tvAoo1QUJwNEU2ITftXTpR7R1RbCzoZUOs3RonqW57k=
 github.com/onsi/gomega v1.27.6 h1:ENqfyGeS5AX/rlXDd/ETokDz93u0YufY1Pgxuy/PvWE=
